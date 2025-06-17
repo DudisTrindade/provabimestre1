@@ -4,24 +4,63 @@ public class Personagem : MonoBehaviour
 {
     [SerializeField] private string nome;
     [SerializeField] private int energia;
-    [SerializeField] private int forca;
-    [SerializeField] private int defesa;
+    [SerializeField] private int forcaAtaque;
+    [SerializeField] private int velocidade;
 
-    // Getters (Leitura)
-    public string GetNome() => nome;
-    public int GetEnergia() => energia;
-    public int GetForca() => forca;
-    public int GetDefesa() => defesa;
-
-    // Setters (Escrita)
-    public void SetNome(string novoNome) => nome = novoNome;
-    public void SetEnergia(int novaEnergia) => energia = novaEnergia;
-    public void SetForca(int novaForca) => forca = novaForca;
-    public void SetDefesa(int novaDefesa) => defesa = novaDefesa;
-
-    // Comparação entre dois personagens (por força)
-    public bool CompararForca(Personagem outroPersonagem)
+    public void AtribuirNome(string novoNome)
     {
-        return this.forca > outroPersonagem.GetForca();
+        nome = novoNome;
+    }
+
+    public string LerNome()
+    {
+        return nome;
+    }
+
+    public void AtribuirEnergia(int valor)
+    {
+        energia = valor;
+    }
+
+    public int LerEnergia()
+    {
+        return energia;
+    }
+
+    public void AtribuirForcaAtaque(int valor)
+    {
+        forcaAtaque = valor;
+    }
+
+    public int LerForcaAtaque()
+    {
+        return forcaAtaque;
+    }
+
+    public void AtribuirVelocidade(int valor)
+    {
+        velocidade = valor;
+    }
+
+    public int LerVelocidade()
+    {
+        return velocidade;
+    }
+
+    // Comparar quem tem mais energia
+    public void CompararEnergia(Personagem outro)
+    {
+        if (energia > outro.LerEnergia())
+        {
+            Debug.Log(nome + " tem mais energia que " + outro.LerNome());
+        }
+        else if (energia < outro.LerEnergia())
+        {
+            Debug.Log(outro.LerNome() + " tem mais energia que " + nome);
+        }
+        else
+        {
+            Debug.Log(nome + " e " + outro.LerNome() + " têm a mesma energia.");
+        }
     }
 }

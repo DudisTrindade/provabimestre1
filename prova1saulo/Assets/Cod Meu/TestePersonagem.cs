@@ -1,38 +1,31 @@
 using UnityEngine;
 
-public class TestePersonagem : MonoBehaviour
+public class TestePersonagens : MonoBehaviour
 {
-    public Elementalista elementalista1;
-    public Elementalista elementalista2;
+    public Elementalista elementalista;
+    public Inimigo inimigo;
 
     void Start()
     {
-        // Inicializando personagens com valores
-        elementalista1.SetNome("Aeryn");
-        elementalista1.SetEnergia(100);
-        elementalista1.SetForca(80);
-        elementalista1.SetDefesa(60);
+        // Preencher valores
+        elementalista.AtribuirNome("Mestre dos Gelo");
+        elementalista.AtribuirEnergia(100);
+        elementalista.AtribuirForcaAtaque(50);
+        elementalista.AtribuirVelocidade(20);
 
-        elementalista2.SetNome("Kael");
-        elementalista2.SetEnergia(90);
-        elementalista2.SetForca(70);
-        elementalista2.SetDefesa(75);
+        inimigo.AtribuirNome("Goblin Guerreiro");
+        inimigo.AtribuirEnergia(80);
+        inimigo.AtribuirForcaAtaque(40);
+        inimigo.AtribuirVelocidade(15);
 
-        // Usar habilidade especial
-        elementalista1.UsarHabilidadeEspecial();
+        // Usar funções
+        Debug.Log("Nome do Elementalista: " + elementalista.LerNome());
+        Debug.Log("Energia do Inimigo: " + inimigo.LerEnergia());
 
-        // Exibir valores
-        Debug.Log($"Personagem 1: {elementalista1.GetNome()}, Força: {elementalista1.GetForca()}");
-        Debug.Log($"Personagem 2: {elementalista2.GetNome()}, Força: {elementalista2.GetForca()}");
+        elementalista.UsarHabilidadeEspecial();
+        inimigo.AtaqueSimples();
 
-        // Comparar força
-        if (elementalista1.CompararForca(elementalista2))
-        {
-            Debug.Log($"{elementalista1.GetNome()} é mais forte que {elementalista2.GetNome()}.");
-        }
-        else
-        {
-            Debug.Log($"{elementalista2.GetNome()} é mais forte que {elementalista1.GetNome()}.");
-        }
+        // Comparar energias
+        elementalista.CompararEnergia(inimigo);
     }
 }
